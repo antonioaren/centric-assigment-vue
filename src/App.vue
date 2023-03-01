@@ -1,6 +1,6 @@
 <template>
     <div class="parent-container">
-        <Master @selected="selectedValue"/>
+        <Master @selected="selected"/>
         <Details :details="details"/>
     </div>
 </template>
@@ -8,7 +8,6 @@
 <script>
 import Master from './components/Master.vue'
 import Details from './components/Details.vue'
-import axios from 'axios'
 
 export default {
     name: 'App',
@@ -22,8 +21,8 @@ export default {
         }
     },
     methods: {
-      async selectedValue(urlDetail) {
-        this.details = (await axios.get(urlDetail)).data
+      async selected(pokemon) {
+        this.details = pokemon
       }
     },
 }

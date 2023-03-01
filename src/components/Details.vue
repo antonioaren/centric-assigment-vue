@@ -2,15 +2,22 @@
     <div class="detail-container">
         <div>
             <div v-if="details">
-                <h2>Detail</h2>
-                Name: {{ details?.name }} <br />
-                height {{ details?.height }}
+                <h2>Pokemon Details</h2>
+                <div class="name">
+                    Name: {{ details?.name }}
+                </div>
+                <div class="height">
+                    height {{ details?.height }}
+                </div>
+                <div class="image">
+                    <img :src="details?.sprites?.front_default" alt="pokemon image">
+                </div>
             </div>
             <div v-else>
                 Nothin choose yet
             </div>
         </div>
-    </div>
+    </div>  
 </template>
 
 <script>

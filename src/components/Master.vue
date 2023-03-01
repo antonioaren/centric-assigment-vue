@@ -1,7 +1,7 @@
 <template>
     <div class="master-container">
         <h1>Pokemones</h1>
-        <div v-for="pokemon in pokemons" :key="pokemon.name">
+        <div v-for="(pokemon) in pokemons" :key="pokemon.name">
             <div @click="getSelected(pokemon)" class="item">
                 <div class="image">
                     <img :src="pokemon.sprites.front_default" alt="pokemon image">
@@ -22,6 +22,7 @@ export default {
     data() {
         return {
             pokemons: [],
+            dataClicked: {}
         }
     },
     async mounted() {
@@ -37,9 +38,14 @@ export default {
         this.pokemons = pokemonData.map((pokemon) => pokemon.data)
     },
     methods: {
-        getSelected(url) {
-            this.$emit('selected', url)
+        getSelected(pokemon) {
+            this.setClick(pokemon.id)
+            pokemon["clicks"] = this.dataClicked[pokemon.id]
+            this.$emit('selected', pokemon)
         },
+        setClick(id) {
+            this.dataClicked[id] ? this.dataClicked[id] += 1 : this.dataClicked[id] = 1
+        }
     },
 }
 </script>

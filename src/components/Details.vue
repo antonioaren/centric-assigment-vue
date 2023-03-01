@@ -3,6 +3,9 @@
         <div>
             <div v-if="details">
                 <h2>Pokemon Details</h2>
+                <div class="clicks">
+                    Clicks: {{ details?.clicks }}
+                </div>
                 <div class="name">
                     Name: {{ details?.name }}
                 </div>

@@ -2,11 +2,11 @@
     <div class="master-container">
         <h1>Pokemones</h1>
         <div v-for="(pokemon) in pokemons" :key="pokemon.name">
-            <div @click="getSelected(pokemon)" class="item">
-                <div class="image">
+            <div class="item">
+                <div @click="sendClick(pokemon.id)" class="image">
                     <img :src="pokemon.sprites.front_default" alt="pokemon image">
                 </div>
-                <div class="name">
+                <div @click="getSelected(pokemon)" class="name">
                     {{ pokemon.name }}
                 </div>
             </div>
@@ -39,12 +39,18 @@ export default {
     },
     methods: {
         getSelected(pokemon) {
-            this.setClick(pokemon.id)
-            pokemon["clicks"] = this.dataClicked[pokemon.id]
             this.$emit('selected', pokemon)
+            if (!this.dataClicked[pokemon.id]) {
+                this.dataClicked[pokemon.id] = 0
+            }
+            this.$emit('click', this.dataClicked[pokemon.id])
         },
         setClick(id) {
             this.dataClicked[id] ? this.dataClicked[id] += 1 : this.dataClicked[id] = 1
+        },
+        sendClick(id) {
+            this.setClick(id)
+            this.$emit('click', this.dataClicked[id])
         }
     },
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="parent-container">
-        <Master @selected="selected"/>
-        <Details :details="details"/>
+        <Master @selected="selected" @click="click" />
+        <Details :details="details" :clicks="clicks" />
     </div>
 </template>
 
@@ -18,12 +18,17 @@ export default {
     data() {
         return {
             details: null,
+            clicks: 0,
         }
     },
     methods: {
-      async selected(pokemon) {
-        this.details = pokemon
-      }
+        selected(pokemon) {
+            this.details = pokemon
+        },
+        click(clicks) {
+            console.log(clicks)
+            this.clicks = clicks
+        },
     },
 }
 </script>
@@ -35,6 +40,5 @@ export default {
     width: 100%;
     height: 100vh;
     position: fixed;
-
 }
 </style>

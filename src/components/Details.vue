@@ -4,7 +4,7 @@
             <div v-if="details">
                 <h2>Pokemon Details</h2>
                 <div class="clicks">
-                    Clicks: {{ details?.clicks }}
+                    Clicks: {{ clicks }}
                 </div>
                 <div class="name">
                     Name: {{ details?.name }}
@@ -30,6 +30,7 @@ export default {
         msg: String,
         url: String,
         details: Object,
+        clicks: Number,
     },
 }
 </script>

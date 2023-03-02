@@ -1,7 +1,8 @@
 <template>
     <div class="parent-container">
+        <div class="holi"></div>
         <Master @selected="selected" @click="click" />
-        <Details :details="details" :clicks="clicks" />
+        <Details :details="details" :clicks="clicks"/>
     </div>
 </template>
 
@@ -33,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .parent-container {
     display: flex;
     flex-direction: row;
